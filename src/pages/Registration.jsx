@@ -13,6 +13,7 @@ const Registration = () => {
     const[email,setEmail]=useState("")
     const[password,setPassword]=useState("")
     const {serverUrl}=useContext(AuthContext)
+    const {getCurrentUser}=useContext(AuthContext)
     const navigate = useNavigate()
 
     const handleSingUp=async(e)=>{
@@ -23,6 +24,8 @@ const Registration = () => {
             }, {withCredentials:true})
             console.log(result.data);
             e.target.reset()
+            getCurrentUser()
+            navigate('/')
 
         }
         catch(error){

@@ -12,6 +12,7 @@ const Login = () => {
     const[email,setEmail]=useState("")
        const[password,setPassword]=useState("")
        const {serverUrl}=useContext(AuthContext)
+       const {getCurrentUser}=useContext(AuthContext)
        const navigate = useNavigate()
 
        const handleLogIn =async(e)=>{
@@ -20,6 +21,8 @@ const Login = () => {
             const result = await axios.post(serverUrl + '/login',{email,password},{withCredentials:true})
             console.log(result.data)
             e.target.reset()
+            getCurrentUser()
+            navigate('/')
 
         }
         catch(error){
