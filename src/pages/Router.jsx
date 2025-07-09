@@ -3,9 +3,12 @@ import Registration from "./Registration";
 import Home from "./Home";
 import Login from "./Login";
 import Nav from "../components/Nav";
+// import { useContext } from "react";
+// import { AuthContext } from "../provider/AuthProvider";
 
 
 const Router = () => {
+    // const {userData}=useContext(AuthContext)
     return (
         <>
         <Nav></Nav>
