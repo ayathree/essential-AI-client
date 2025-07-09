@@ -8,7 +8,7 @@ import { AuthContext } from '../provider/AuthProvider';
 import axios from 'axios';
 
 const Nav = () => {
-    const {userData,getCurrentUser,serverUrl}=useContext(AuthContext)
+    const {userData,serverUrl,setUserData}=useContext(AuthContext)
     const [showSearch,setShowSearch]=useState(false)
     const [showProfile,setShowProfile]=useState(false)
     const navigate = useNavigate()
@@ -17,7 +17,10 @@ const Nav = () => {
         try{
             const result = await axios.get(serverUrl + '/logout', {withCredentials:true})
             console.log(result.data);
-            getCurrentUser()
+            setUserData(null)
+            navigate('/login')
+
+            
         }
         catch(error){
             console.log(error);
