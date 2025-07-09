@@ -2,13 +2,15 @@ import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.jpg'
 import { IoSearchCircle, IoSearchCircleOutline } from 'react-icons/io5';
 import { FaCircleUser } from 'react-icons/fa6';
-import { MdOutlineShoppingCart } from 'react-icons/md';
+import { MdEmail, MdOutlineShoppingCart } from 'react-icons/md';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import axios from 'axios';
+import { IoMdHome } from 'react-icons/io';
+import { BsInboxesFill } from 'react-icons/bs';
 
 const Nav = () => {
-    const {userData,getCurrentUser,serverUrl,setUserData}=useContext(AuthContext)
+    const {userData,getCurrentUser,serverUrl}=useContext(AuthContext)
     const [showSearch,setShowSearch]=useState(false)
     const [showProfile,setShowProfile]=useState(false)
     const navigate = useNavigate()
@@ -18,8 +20,7 @@ const Nav = () => {
             const result = await axios.get(serverUrl + '/logout', {withCredentials:true})
             console.log(result.data);
              getCurrentUser()
-            // setUserData(null)
-            // navigate('/login')
+           navigate('/login')
 
             
         }
@@ -31,11 +32,11 @@ const Nav = () => {
     return (
         <div className="w-[100vw] h-[70px] bg-[#663333] z-10 fixed top-0 flex items-center justify-between px-[30px] shadow-md shadow-black">
             {/* div 1 */}
-            <div className="w-[30%] flex items-center justify-start gap-[10px]">
+            <div className="w-[20%] lg:w-[30%] flex items-center justify-start gap-[10px]">
                 <Link to={'/'}><img className='w-[300px] cursor-pointer' src={logo} alt="" /></Link>
             </div>
             {/* div 2 */}
-            <div className='w-[40%]'>
+            <div className='w-[50%] lg:w-[20%] hidden md:flex'>
                 <ul className='flex items-center justify-center gap-[19px] text-white'>
                     <li className='text-[15px] hover:bg-[#EFD8D8] cursor-pointer hover:text-black  text-white font-bold py-[10px] px-[20px] rounded-2xl'>HOME</li>
                     <li className='text-[15px] hover:bg-[#EFD8D8] cursor-pointer hover:text-black  text-white font-bold py-[10px] px-[20px] rounded-2xl'>STORE</li>
@@ -52,7 +53,7 @@ const Nav = () => {
                 }
                 {!userData && <FaCircleUser onClick={()=>setShowProfile(prev=>!prev)} className='w-[29px] h-[29px] text-white cursor-pointer'></FaCircleUser>}
                 {userData && <div onClick={()=>setShowProfile(prev=>!prev)} className='w-[30px] h-[30px] uppercase font-bold bg-[white] text-black rounded-full cursor-pointer flex items-center justify-center'>{userData?.user.name.slice(0,1)}</div>}
-                <MdOutlineShoppingCart className=' w-[30px] h-[30px] text-white cursor-pointer'></MdOutlineShoppingCart>
+                <MdOutlineShoppingCart className='hidden md:block w-[30px] h-[30px] text-white cursor-pointer'></MdOutlineShoppingCart>
                 <p className='absolute w-[18px] items-center md:flex justify-center bg-black px-[5px] py-[2px] text-white rounded-full text-[10px] top-[10px] right-[23px] hidden'>10</p>
 
             </div>
@@ -79,6 +80,16 @@ const Nav = () => {
                     </ul>
                 </div>
             }
+            {/* div 6 */}
+            <div className='w-[100vw] h-[90px] text-[12px] flex items-center justify-between px-[20px] fixed bottom-0 left-0 bg-[#663333] md:hidden'>
+                <button className='text-white flex items-center justify-center flex-col gap-[2px]'><IoMdHome className='w-[30px] h-[24px] text-white md:hidden' />Home</button>
+                  <button className='text-white flex items-center justify-center flex-col gap-[2px]'><BsInboxesFill className='w-[30px] h-[24px] text-white md:hidden' />Store</button>
+                    <button className='text-white flex items-center justify-center flex-col gap-[2px]'><MdEmail className='w-[30px] h-[24px] text-white md:hidden' />Contact</button>
+                      <button className='text-white flex items-center justify-center flex-col gap-[2px]'><MdOutlineShoppingCart className='w-[30px] h-[24px] text-white md:hidden' />Cart</button>
+                
+
+
+            </div>
 
             
         </div>
