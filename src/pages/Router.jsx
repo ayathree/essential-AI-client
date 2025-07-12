@@ -22,10 +22,10 @@ const Router = () => {
               <Route path='/login' element={<Login/>}></Route>
             <Route path='/signup' element={<Registration/>}></Route>
              {!adminData ? (
-  <Route path="/login" element={<Login />} />
+  <Route path='/adminLogin' element={<AdminLogin/>} />
 ) : (<>
                  <Route path='/adminHome' element={<AdminHome/>}></Route>
-              <Route path='/adminLogin' element={<AdminLogin/>}></Route>
+              
                <Route path='/order' element={<Orders/>}></Route>
                 <Route path='/list' element={<List/>}></Route>
                  <Route path='/add' element={<Add/>}></Route>
