@@ -38,10 +38,10 @@ const Nav = () => {
             {/* div 2 */}
             <div className='w-[50%] lg:w-[20%] hidden md:flex'>
                 <ul className='flex items-center justify-center gap-[19px] text-white'>
-                    <li className='text-[15px] hover:bg-[#EFD8D8] cursor-pointer hover:text-black  text-white font-bold py-[10px] px-[20px] rounded-2xl'>HOME</li>
-                    <li className='text-[15px] hover:bg-[#EFD8D8] cursor-pointer hover:text-black  text-white font-bold py-[10px] px-[20px] rounded-2xl'>STORE</li>
-                    <li className='text-[15px] hover:bg-[#EFD8D8] cursor-pointer hover:text-black text-white font-bold py-[10px] px-[20px] rounded-2xl'>ABOUT</li>
-                    <li className='text-[15px] hover:bg-[#EFD8D8] cursor-pointer hover:text-black  text-white font-bold py-[10px] px-[20px] rounded-2xl'>CONTACT</li>
+                <Link to={'/'}><li className='text-[15px] hover:bg-[#EFD8D8] cursor-pointer hover:text-black  text-white font-bold py-[10px] px-[20px] rounded-2xl'>HOME</li></Link>
+                <Link to={'/shop'}><li className='text-[15px] hover:bg-[#EFD8D8] cursor-pointer hover:text-black  text-white font-bold py-[10px] px-[20px] rounded-2xl'>STORE</li></Link>
+                <Link to={'/about'}><li className='text-[15px] hover:bg-[#EFD8D8] cursor-pointer hover:text-black text-white font-bold py-[10px] px-[20px] rounded-2xl'>ABOUT</li></Link>
+                <Link to={'/contact'}><li className='text-[15px] hover:bg-[#EFD8D8] cursor-pointer hover:text-black  text-white font-bold py-[10px] px-[20px] rounded-2xl'>CONTACT</li></Link>                                                      
                 </ul>
 
             </div>
@@ -75,17 +75,17 @@ const Nav = () => {
                         {
                             userData && <li onClick={()=>{handleLogout();setShowProfile(false)}} className='w-[100%] uppercase font-semibold hover:bg-white hover:text-[#663333] text-white px-[15px] py-[10px] cursor-pointer'>Logout</li>
                         }
-                        <li className='w-[100%] uppercase font-semibold hover:bg-white hover:text-[#663333] text-white px-[15px] py-[10px] cursor-pointer'>Orders</li>
-                        <li className='w-[100%] uppercase font-semibold hover:bg-white hover:text-[#663333] text-white px-[15px] py-[10px] cursor-pointer'>About</li>
+                        <li onClick={()=>navigate('/order')} className='w-[100%] uppercase font-semibold hover:bg-white hover:text-[#663333] text-white px-[15px] py-[10px] cursor-pointer'>Orders</li>
+                        <li onClick={()=>navigate('/about')} className='w-[100%] uppercase font-semibold hover:bg-white hover:text-[#663333] text-white px-[15px] py-[10px] cursor-pointer'>About</li>
                     </ul>
                 </div>
             }
             {/* div 6 */}
             <div className='w-[100vw] h-[90px] text-[12px] flex items-center justify-between px-[20px] fixed bottom-0 left-0 bg-[#663333] md:hidden'>
-                <button className='text-white flex items-center justify-center flex-col gap-[2px]'><IoMdHome className='w-[30px] h-[24px] text-white md:hidden' />Home</button>
-                  <button className='text-white flex items-center justify-center flex-col gap-[2px]'><BsInboxesFill className='w-[30px] h-[24px] text-white md:hidden' />Store</button>
-                    <button className='text-white flex items-center justify-center flex-col gap-[2px]'><MdEmail className='w-[30px] h-[24px] text-white md:hidden' />Contact</button>
-                      <button className='text-white flex items-center justify-center flex-col gap-[2px]'><MdOutlineShoppingCart className='w-[30px] h-[24px] text-white md:hidden' />Cart</button>
+                <Link to={'/'}><button className='text-white flex items-center justify-center flex-col gap-[2px]'><IoMdHome className='w-[30px] h-[24px] text-white md:hidden' />Home</button></Link>
+                <Link to={'/shop'}><button className='text-white flex items-center justify-center flex-col gap-[2px]'><BsInboxesFill className='w-[30px] h-[24px] text-white md:hidden' />Store</button></Link>
+               <Link to={'/contact'}> <button className='text-white flex items-center justify-center flex-col gap-[2px]'><MdEmail className='w-[30px] h-[24px] text-white md:hidden' />Contact</button></Link>
+                <Link to={'/cart'}><button className='text-white flex items-center justify-center flex-col gap-[2px]'><MdOutlineShoppingCart className='w-[30px] h-[24px] text-white md:hidden' />Cart</button></Link>
                 
 
 
