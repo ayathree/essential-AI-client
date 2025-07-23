@@ -9,7 +9,25 @@ export const AuthContext = createContext(null)
 const AuthProvider = ({children}) => {
     const [userData,setUserData]=useState("")
     const[adminData,setAdminData]=useState("")
+    const[products,setProducts]=useState([])
     const serverUrl = import.meta.env.VITE_API_URL
+    const currency="$";
+    const delivery_fee=40;
+
+    const getProduct = async()=>{
+        try{
+            const result = await axios.get(serverUrl + '/products')
+            console.log(result.data);
+            setProducts(result.data)
+
+        }catch(error){
+            console.log(error);
+        }
+    }
+
+    useEffect(()=>{
+        getProduct()
+    },[])
 
     const getCurrentUser = async()=>{
         try{
@@ -46,7 +64,7 @@ const AuthProvider = ({children}) => {
     },[])
 
     const allInfo={
-        serverUrl,userData,setUserData,getCurrentUser,getAdmin,adminData,setAdminData
+        serverUrl,userData,setUserData,getCurrentUser,getAdmin,adminData,setAdminData,products,getProduct,delivery_fee,currency
     }
 
     return (
