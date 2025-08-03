@@ -32,7 +32,7 @@ const Home = () => {
         </div>
         <Product></Product>
         <OurPolicy></OurPolicy>
-        <NewLetterBox></NewLetterBox>
+        
         <Footer></Footer>
         </div>
     );
