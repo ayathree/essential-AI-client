@@ -4,6 +4,7 @@ import Hero from "../components/Hero";
 import Product from "./Product";
 import OurPolicy from "../components/OurPolicy";
 import NewLetterBox from "../components/newLetterBox";
+import Footer from "../components/Footer";
 
 
 
@@ -32,6 +33,7 @@ const Home = () => {
         <Product></Product>
         <OurPolicy></OurPolicy>
         <NewLetterBox></NewLetterBox>
+        <Footer></Footer>
         </div>
     );
 };

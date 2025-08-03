@@ -5,7 +5,7 @@ const NewLetterBox = () => {
         e.preventDefault()
     }
     return (
-        <div className="w-[100%] h-[40vh] flex items-center justify-start gap-[10px] flex-col mt-28">
+        <div className="w-[100%] h-[40vh]  flex items-center justify-start gap-[10px] flex-col mt-28">
             <p className="md:text-[30px] text-[20px] text-[#663333] font-semibold px-[20px] capitalize">
                 subscribe now and get 20% off
 
