@@ -10,8 +10,8 @@ import { IoMdHome } from 'react-icons/io';
 import { BsInboxesFill } from 'react-icons/bs';
 
 const Nav = () => {
-    const {userData,getCurrentUser,serverUrl}=useContext(AuthContext)
-    const [showSearch,setShowSearch]=useState(false)
+    const {userData,getCurrentUser,serverUrl,showSearch,setShowSearch,search,setSearch}=useContext(AuthContext)
+
     const [showProfile,setShowProfile]=useState(false)
     const navigate = useNavigate()
 
@@ -47,7 +47,7 @@ const Nav = () => {
             </div>
             {/* div 3 */}
             <div className='w-[30%] flex items-center justify-end gap-[20px]'>
-                {!showSearch && <IoSearchCircleOutline onClick={()=>setShowSearch(prev=>!prev)} className='w-[38px] h-[38px] text-white cursor-pointer'></IoSearchCircleOutline>}
+                {!showSearch && <IoSearchCircleOutline onClick={()=>{setShowSearch(prev=>!prev);navigate('/shop')}} className='w-[38px] h-[38px] text-white cursor-pointer'></IoSearchCircleOutline>}
                 {showSearch &&
                     <IoSearchCircle onClick={()=>setShowSearch(prev=>!prev)} className='w-[38px] h-[38px] text-white cursor-pointer'></IoSearchCircle>
                 }
@@ -60,7 +60,7 @@ const Nav = () => {
             {/* div 4 */}
             { showSearch &&
                 <div className='w-[100%] h-[80px] bg-white absolute top-[100%] left-0 right-0 flex items-center justify-center'>
-                <input type="text" className='lg:w-[50%] w-[80%] h-[60%] bg-[#663333] rounded-[30px] px-[50px] placeholder:text-white text-white text-[18px]' placeholder='Search Here' />
+                <input type="text" className='lg:w-[50%] w-[80%] h-[60%] bg-[#663333] rounded-[30px] px-[50px] placeholder:text-white text-white text-[18px]' placeholder='Search Here' onChange={(e)=>{setSearch(e.target.value)}} value={search} />
 
             </div>
             }

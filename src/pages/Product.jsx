@@ -2,6 +2,7 @@ import BestSeller from "../components/BestSeller";
 import NewArrival from "../components/NewArrival";
 
 
+
 const Product = () => {
     return (
         <div className="w-[100vw] min-h-[100vh] flex items-center justify-start flex-col py-[20px]">
@@ -9,7 +10,7 @@ const Product = () => {
                 <NewArrival></NewArrival>
             </div>
             <div className="w-[100%] min-h-[70px] flex items-center justify-center gap-[10px] flex-col ">
-                <BestSeller></BestSeller>
+                <BestSeller></BestSeller>               
             </div>
             
         </div>
