@@ -5,6 +5,7 @@ import Product from "./Product";
 import OurPolicy from "../components/OurPolicy";
 
 import Footer from "../components/Footer";
+import NewLetterBox from "../components/NewLetterBox";
 
 
 
@@ -32,6 +33,7 @@ const Home = () => {
         </div>
         <Product></Product>
         <OurPolicy></OurPolicy>
+        <div className="mt-[120px]"><NewLetterBox></NewLetterBox></div>
         
         <Footer></Footer>
         </div>

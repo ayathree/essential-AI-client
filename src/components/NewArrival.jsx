@@ -22,7 +22,7 @@ const NewArrival = () => {
             <div className="w-[100%] h-[50%] mt-[30px] flex items-center justify-center flex-wrap gap-[50px]">
                 {
                     latestProducts.map((item,index)=>(
-                        <Card key={index} name={item.name} image={item.images[0]?.url} id={item.id} price={item.price}></Card>
+                        <Card key={index} name={item.name} image={item.images[0]?.url} id={item._id} price={item.price}></Card>
                     ))
 
                 }
