@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { FaStar } from "react-icons/fa6";
 import { FaStarHalfAlt } from "react-icons/fa";
+import RelatedProducts from "../components/RelatedProducts";
 
 
 const ProductDetails = () => {
@@ -123,6 +124,10 @@ const ProductDetails = () => {
                     <p className="border px-5 py-3 text-sm  text-[#663333]">(124)</p>
 
                 </div>
+                <div className="w-[80%] md:h-[150px] h-[220px] bg-[#663333] border text-[white] text-[13px] md:text-[15px] lg:text-[20px] px-[10px] md:px-[30px] lg:ml-[100px] ml-[20px]">
+                    <p className="w-[95%] h-[90%] flex items-center justify-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, consequatur dolorum rem veniam tempore voluptatibus. Possimus, tenetur! Iusto temporibus enim obcaecati, aliquid corrupti quos repellendus, ipsam tempore iure quasi ex.</p>
+                </div>
+                <RelatedProducts category={productData.category} subCategory={productData.subCategory} currentProductId={productData._id}></RelatedProducts>
             </div>
             
         </div>
