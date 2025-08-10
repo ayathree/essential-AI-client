@@ -15,6 +15,7 @@ import Contact from "./Contact";
 import Product from "./Product";
 import About from "./About";
 import ProductDetails from "./ProductDetails";
+import Cart from "./Cart";
 
 
 const Router = () => {
@@ -41,6 +42,9 @@ const Router = () => {
 
             <Route path='/about' element={userData?<About/>: <Navigate to={'/login'} state={{from:location.pathname}}></Navigate>}></Route>
              <Route path='/productDetail/:productId' element={userData?<ProductDetails/>: <Navigate to={'/login'} state={{from:location.pathname}}></Navigate>}></Route>
+
+             <Route path='/cart' element={userData?<Cart/>: <Navigate to={'/'} state={{from:location.pathname}}></Navigate>}></Route>
+
 
              {!adminData ? (
   <Route path='/adminLogin' element={<AdminLogin/>} />

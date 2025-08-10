@@ -10,7 +10,7 @@ import { IoMdHome } from 'react-icons/io';
 import { BsInboxesFill } from 'react-icons/bs';
 
 const Nav = () => {
-    const {userData,getCurrentUser,serverUrl,showSearch,setShowSearch,search,setSearch}=useContext(AuthContext)
+    const {userData,getCurrentUser,serverUrl,showSearch,setShowSearch,search,setSearch,getCartCount}=useContext(AuthContext)
 
     const [showProfile,setShowProfile]=useState(false)
     const navigate = useNavigate()
@@ -53,8 +53,8 @@ const Nav = () => {
                 }
                 {!userData && <FaCircleUser onClick={()=>setShowProfile(prev=>!prev)} className='w-[29px] h-[29px] text-white cursor-pointer'></FaCircleUser>}
                 {userData && <div onClick={()=>setShowProfile(prev=>!prev)} className='w-[30px] h-[30px] uppercase font-bold bg-[white] text-black rounded-full cursor-pointer flex items-center justify-center'>{userData?.user.name.slice(0,1)}</div>}
-                <MdOutlineShoppingCart className='hidden md:block w-[30px] h-[30px] text-white cursor-pointer'></MdOutlineShoppingCart>
-                <p className='absolute w-[18px] items-center md:flex justify-center bg-black px-[5px] py-[2px] text-white rounded-full text-[10px] top-[10px] right-[23px] hidden'>10</p>
+                <MdOutlineShoppingCart className='hidden md:block w-[30px] h-[30px] text-white cursor-pointer' onClick={()=>navigate('/cart')}></MdOutlineShoppingCart>
+                <p className='absolute w-[18px] items-center md:flex justify-center bg-black px-[5px] py-[2px] text-white rounded-full text-[10px] top-[10px] right-[23px] hidden'>{getCartCount()}</p>
 
             </div>
             {/* div 4 */}
@@ -85,8 +85,8 @@ const Nav = () => {
                 <Link to={'/'}><button className='text-white flex items-center justify-center flex-col gap-[2px]'><IoMdHome className='w-[30px] h-[24px] text-white md:hidden' />Home</button></Link>
                 <Link to={'/shop'}><button className='text-white flex items-center justify-center flex-col gap-[2px]'><BsInboxesFill className='w-[30px] h-[24px] text-white md:hidden' />Store</button></Link>
                <Link to={'/contact'}> <button className='text-white flex items-center justify-center flex-col gap-[2px]'><MdEmail className='w-[30px] h-[24px] text-white md:hidden' />Contact</button></Link>
-                <Link to={'/cart'}><button className='text-white flex items-center justify-center flex-col gap-[2px]'><MdOutlineShoppingCart className='w-[30px] h-[24px] text-white md:hidden' />Cart</button>
-                <p className='absolute w-[18px] h-[18px] flex items-center justify-center bg-white px-[5px] py-[2px] text-black font-semibold rounded-full text-[9px] top-[8px] right-[18px]'>10</p></Link>
+                <Link to={'/cart'}><button className='text-white flex items-center justify-center flex-col gap-[2px]'><MdOutlineShoppingCart className='w-[30px] h-[24px] text-white md:hidden' onClick={()=>navigate('/cart')} />Cart</button>
+                <p className='absolute w-[18px] h-[18px] flex items-center justify-center bg-white px-[5px] py-[2px] text-black font-semibold rounded-full text-[9px] top-[8px] right-[18px]'>{getCartCount()}</p></Link>
                 
 
 
