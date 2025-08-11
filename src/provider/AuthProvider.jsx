@@ -130,7 +130,7 @@ const AuthProvider = ({children}) => {
         console.log(cartData);
         if(userData){
             try{
-                await axios.patch(serverUrl + '/updateCart', {itemId,size,quantity}, {withCredentials:true})
+                await axios.put(serverUrl + '/updateCart', {itemId,size,quantity}, {withCredentials:true})
 
         }catch(error){
             console.log(error);
@@ -159,14 +159,14 @@ const AuthProvider = ({children}) => {
         return totalCount
     }
 
-    const getCartAmount = async()=>{
+    const getCartAmount = ()=>{
         let totalAmount=0;
         for(const items in cartItem){
             let itemInfo = products.find((product)=>product._id === items);
             for(const item in cartItem[items]){
                 try{
                     if(cartItem[items][item]>0){
-                        totalAmount += itemInfo.price * cartItem[items][item]
+                         totalAmount += itemInfo.price * cartItem[items][item]
                     }
 
                 }catch(error){
@@ -175,6 +175,7 @@ const AuthProvider = ({children}) => {
                 }
             }
         }
+        return totalAmount
     }
 
     const allInfo={
