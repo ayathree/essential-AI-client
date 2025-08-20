@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import AdminHome from "../admin/pages/AdminHome";
 import AdminLogin from "../admin/pages/AdminLogin";
-import Orders from "../admin/pages/Orders";
+
 import List from "../admin/pages/List";
 import Add from "../admin/pages/Add";
 import Shop from "./Shop";
@@ -18,6 +18,7 @@ import ProductDetails from "./ProductDetails";
 import Cart from "./Cart";
 import PlaceOrder from "./PlaceOrder";
 import Order from "./Order";
+import AdminOrder from "../admin/pages/AdminOrder";
 
 
 const Router = () => {
@@ -55,7 +56,7 @@ const Router = () => {
 ) : (<>
                  <Route path='/adminHome' element={<AdminHome/>}></Route>
               
-               <Route path='/order' element={<Orders/>}></Route>
+               <Route path='/adminOrder' element={<AdminOrder/>}></Route>
                 <Route path='/list' element={<List/>}></Route>
                  <Route path='/add' element={<Add/>}></Route>
              </>)

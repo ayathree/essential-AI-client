@@ -18,7 +18,7 @@ const Sidebar = () => {
                     <FaRegListAlt  className="h-[20px] w-[20px]" />
                     <p className="hidden md:block"> List Items</p>
                 </div></Link>
-                <Link to={'/order'}><div className="flex items-center justify-center md:justify-start gap-3 border border-grey-200 border-r-0 px-3 py-2 cursor-pointer hover:bg-[#663333] hover:text-white">
+                <Link to={'/adminOrder'}><div className="flex items-center justify-center md:justify-start gap-3 border border-grey-200 border-r-0 px-3 py-2 cursor-pointer hover:bg-[#663333] hover:text-white">
                     <SiTicktick  className="h-[20px] w-[20px]" />
                     <p className="hidden md:block">View Orders</p>
                 </div></Link>
