@@ -21,6 +21,7 @@ import Order from "./Order";
 import AdminOrder from "../admin/pages/AdminOrder";
 import { ToastContainer } from 'react-toastify';
 import NotFound from "./NotFound";
+import AdminNotfound from "../admin/pages/AdminNotfound";
 
 
 const Router = () => {
@@ -31,6 +32,7 @@ const Router = () => {
         <ToastContainer />
         {userData && <Nav></Nav>}
         <Routes>
+          
               <Route path='/login' element={
                 userData ?(<Navigate to={location.state?.from || '/'}></Navigate>) :(<Login/>)
                 }></Route>
@@ -62,10 +64,10 @@ const Router = () => {
                <Route path='/adminOrder' element={<AdminOrder/>}></Route>
                 <Route path='/list' element={<List/>}></Route>
                  <Route path='/add' element={<Add/>}></Route>
+                
              </>)
             }
 
-            <Route path="*" element={<NotFound></NotFound>}></Route>
 
         </Routes>
             
