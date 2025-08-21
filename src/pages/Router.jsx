@@ -19,6 +19,8 @@ import Cart from "./Cart";
 import PlaceOrder from "./PlaceOrder";
 import Order from "./Order";
 import AdminOrder from "../admin/pages/AdminOrder";
+import { ToastContainer } from 'react-toastify';
+import NotFound from "./NotFound";
 
 
 const Router = () => {
@@ -26,6 +28,7 @@ const Router = () => {
     const location = useLocation()
     return (
         <>
+        <ToastContainer />
         {userData && <Nav></Nav>}
         <Routes>
               <Route path='/login' element={
@@ -61,6 +64,8 @@ const Router = () => {
                  <Route path='/add' element={<Add/>}></Route>
              </>)
             }
+
+            <Route path="*" element={<NotFound></NotFound>}></Route>
 
         </Routes>
             

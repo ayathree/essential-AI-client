@@ -5,6 +5,7 @@ import axios from "axios";
 import logo from '../../assets/logo.jpg'
 import { FiEye } from "react-icons/fi";
 import { HiOutlineEyeOff } from "react-icons/hi";
+import { toast } from "react-toastify";
 
 
 const AdminLogin = () => {
@@ -21,6 +22,7 @@ const AdminLogin = () => {
             const result = await axios.post(serverUrl + '/adminSignin',{email,password},{withCredentials:true})
             console.log(result.data)
             e.target.reset()
+            toast.success("AdminLogin Successfully")
             getAdmin()
             navigate('/adminHome')
 
@@ -28,6 +30,7 @@ const AdminLogin = () => {
         catch(error){
 
             console.log(error);
+            toast.success("AdminLogin Error")
         }
        }
 

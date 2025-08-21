@@ -4,6 +4,8 @@ import Sidebar from "../components/Sidebar";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import axios from "axios";
+import { toast } from "react-toastify";
+import Loading from "../components/Loading";
 
 
 const Add = () => {
@@ -20,7 +22,10 @@ const Add = () => {
     const[sizes,setSizes]=useState([])
     const {serverUrl}=useContext(AuthContext)
 
+    const[loading,setLoading]=useState(false)
+
     const handleAddProduct = async (e)=>{
+      setLoading(true)
       e.preventDefault()
       try{
         const formData = new FormData();
@@ -47,6 +52,8 @@ console.log("Images:", {
 });
     const result = await axios.post(serverUrl + "/products" , formData, {withCredentials:true})
     console.log(result);
+    toast.success("Add Product Successfully")
+    setLoading(false)
 
     if(result.data){
       setName("")
@@ -63,6 +70,8 @@ console.log("Images:", {
 
       }catch(error){
         console.error('Error:', error);
+        setLoading(false)
+        toast.error("Add Product Failed")
 
       }
 
@@ -215,7 +224,7 @@ console.log("Images:", {
 
                   </div>
                   {/* button*/}
-                  <button className="w-full px-[20px] py-[20px] text-white font-semibold rounded-xl bg-[#663333] flex items-center justify-center gap-[10px]  active:bg-slate-700 active:text-white active:border-[2px] border-white">Add Product</button>
+                  <button className="w-full px-[20px] py-[20px] text-white font-semibold rounded-xl bg-[#663333] flex items-center justify-center gap-[10px]  active:bg-slate-700 active:text-white active:border-[2px] border-white">{loading ? <Loading></Loading>:"Add Product"}</button>
 
 
 
