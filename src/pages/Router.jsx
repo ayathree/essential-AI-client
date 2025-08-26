@@ -22,6 +22,7 @@ import AdminOrder from "../admin/pages/AdminOrder";
 import { ToastContainer } from 'react-toastify';
 import NotFound from "./NotFound";
 import AdminNotfound from "../admin/pages/AdminNotfound";
+import AI from "../components/AI";
 
 
 const Router = () => {
@@ -71,6 +72,7 @@ const Router = () => {
 
         </Routes>
             
+        <AI></AI>
         </>
     );
 };
