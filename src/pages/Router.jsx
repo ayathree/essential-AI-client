@@ -72,7 +72,7 @@ const Router = () => {
 
         </Routes>
             
-        {/* <AI></AI> */}
+        <AI></AI>
         </>
     );
 };
