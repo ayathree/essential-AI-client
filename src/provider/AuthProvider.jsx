@@ -34,35 +34,37 @@ const AuthProvider = ({children}) => {
         getProduct()
     },[])
 
-    const getCurrentUser = async()=>{
-        try{
-            const result = await axios.get(serverUrl + '/getCurrentUser',{withCredentials:true})
-            setUserData(result.data)
-            console.log(result.data);
-        }
-        catch(error){
-            setUserData(null)
-            console.log(error);
-
-        }
-    }
+    const getCurrentUser = async () => {
+  try {
+    const result = await axios.get(serverUrl + '/getCurrentUser', { 
+      withCredentials: true 
+    });
+    setUserData(result.data);
+  } catch (error) {
+    console.log("User not authenticated:", error);
+    setUserData(null);
+    // Clear any invalid tokens on client side
+    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+  }
+};
 
     useEffect(()=>{
         getCurrentUser()
     },[])
 
-    const getAdmin = async()=>{
-        try{
-            const result = await axios.get(serverUrl + '/getAdmin',{withCredentials:true})
-            setAdminData(result.data)
-            console.log(result.data);
-        }
-        catch(error){
-            setAdminData(null)
-            console.log(error);
-
-        }
-    }
+    const getAdmin = async () => {
+  try {
+    const result = await axios.get(serverUrl + '/getAdmin', { 
+      withCredentials: true 
+    });
+    setAdminData(result.data);
+  } catch (error) {
+    console.log("Admin not authenticated:", error);
+    setAdminData(null);
+    // Clear any invalid tokens on client side
+    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+  }
+};
 
     useEffect(()=>{
         getAdmin()

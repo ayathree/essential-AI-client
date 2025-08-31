@@ -10,25 +10,35 @@ import { IoMdHome } from 'react-icons/io';
 import { BsInboxesFill } from 'react-icons/bs';
 
 const Nav = () => {
-    const {userData,getCurrentUser,serverUrl,showSearch,setShowSearch,search,setSearch,getCartCount}=useContext(AuthContext)
+    const {userData,setUserData,getCurrentUser,serverUrl,showSearch,setShowSearch,search,setSearch,getCartCount}=useContext(AuthContext)
 
     const [showProfile,setShowProfile]=useState(false)
     const navigate = useNavigate()
 
-    const handleLogout=async()=>{
-        try{
-            const result = await axios.get(serverUrl + '/logout', {withCredentials:true})
-            console.log(result.data);
-             getCurrentUser()
-           navigate('/login')
-
-            
-        }
-        catch(error){
-            console.log(error);
-
-        }
-    }
+// In your Nav component
+const handleLogout = async () => {
+  try {
+    const result = await axios.get(serverUrl + '/logout', { 
+      withCredentials: true 
+    });
+    console.log(result.data);
+    
+    // Clear client-side state immediately
+    setUserData(null);
+    
+    // Force clear cookies on client side as well
+    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    
+    getCurrentUser();
+    navigate('/login');
+  } catch (error) {
+    console.log(error);
+    // Even if server call fails, clear client state
+    setUserData(null);
+    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    navigate('/login');
+  }
+};
     return (
         <div className="w-[100vw] h-[70px] bg-[#663333] z-10 fixed top-0 flex items-center justify-between px-[30px] shadow-md shadow-black">
             {/* div 1 */}

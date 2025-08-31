@@ -3,7 +3,7 @@ import Registration from "./Registration";
 import Home from "./Home";
 import Login from "./Login";
 import Nav from "../components/Nav";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import AdminHome from "../admin/pages/AdminHome";
 import AdminLogin from "../admin/pages/AdminLogin";
@@ -26,8 +26,30 @@ import AI from "../components/AI";
 
 
 const Router = () => {
-    const {userData, adminData}=useContext(AuthContext)
+    const {userData, adminData,getCurrentUser,getAdmin}=useContext(AuthContext)
     const location = useLocation()
+
+    // Add loading state to avoid flash of content
+    const [authChecking, setAuthChecking] = useState(true);
+
+    useEffect(() => {
+        // Check auth status when component mounts
+        const checkAuth = async () => {
+            await getCurrentUser();
+            await getAdmin();
+            setAuthChecking(false);
+        };
+        checkAuth();
+    }, [getCurrentUser, getAdmin]);
+
+    if (authChecking) {
+        return (
+            <div className="w-full h-screen flex items-center justify-center">
+                <div className="text-xl">Loading...</div>
+            </div>
+        );
+    }
+
     return (
         <>
         <ToastContainer />
